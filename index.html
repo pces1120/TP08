@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<title>Coderhouse</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="script.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="page-header">
+				<h1>IMDB</h1>
+			</div>
+		<div class="row">
+			<div class="col-sm-6">
+					<h4>Nueva Pelicula</h4>
+					<form>
+						<div class="form-group">
+							<label for="titulo">Titulo</label>
+							<input type="text" class="form-control" id="titulo">
+						</div>
+						<div class="form-group">
+							<label for="descripcion">Descripcion</label>
+							<textarea class="form-control" rows="5" id="descripcion"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="imagen">Link de imagen</label>
+							<input type="text" class="form-control" id="imagen">
+						</div>
+						<button id="boton" type="button" class="btn btn-primary">Agregar Pelicula</button>
+					</form>
+			</div>
+			<div class="col-sm-6">
+		    		<button id="mostrar" type="button" class="btn btn-primary pull-right">Mostrar todos</button>
+		    		
+		    		<div id="ordenadores" class="btn-group">
+					  <button id="az" type="button" class="btn btn-primary">A-Z</button>
+					  <button id="za" type="button" class="btn btn-primary">Z-A</button>
+					  <button id="id" type="button" class="btn btn-primary">ID</button>
+					</div>
+
+					<div id="peliculas" class="">
+				
+					</div>
+
+		    	</div>				
+		</div>
+		</div>
+	</body>
+</html>
