@@ -106,7 +106,7 @@ var IMDB = (function (){
 
 	var ordenarId = function() {
 
-		peliculas.sort(this.compararId);
+		peliculas.sort(compararId);
 
 	}
 
@@ -143,12 +143,12 @@ var IMDB = (function (){
 
 	var ordenarAz = function() {
 
-		peliculas.sort(this.compararAz);
+		peliculas.sort(compararAz);
 
 	}
 
 
-	//Funcion para ordenar peliculas por ID
+	//Funcion para ordenar peliculas de ZA
 
 	
 	var compararZA = function (peliculaA,peliculaB) {
@@ -180,7 +180,7 @@ var IMDB = (function (){
 
 	var ordenarZa = function() {
 
-		peliculas.sort(this.compararZa);
+		peliculas.sort(compararZa);
 
 	}
 
@@ -230,35 +230,11 @@ var IMDB = (function (){
 
 
 
-	//Funcion para validar que la pelicula no fue ingresada previamente
-
-	var peliculaNoIngresada = function (pelicula){
-
-		var pos = -1;
-		var peliculaActual;
-
-		for (i = 0; i < peliculas.length && pos === -1; i++) {
-
-			peliculaActual = peliculas[i];
-
-			if (peliculaActual.id === pelicula.id){
-
-				pos = i;
-
-			}
-		}
-
-		return pos;
-	}
-
 
 	//Funcion para agregar la pelicula
 
 	var agregarPelicula = function (pelicula){
 
-		var pos = peliculaNoIngresada(pelicula);
-
-		if (pos === -1){
 
 			peliculas.push(pelicula);
 
@@ -266,11 +242,6 @@ var IMDB = (function (){
 
 			dibujarPelicula(pelicula);
 
-		} else {
-
-			alert('Lo sentimos, la pelicula ' + pelicula.titulo + 'ya esta en nuestros archivos');
-
-		}
 	}
 
 
@@ -280,9 +251,6 @@ var IMDB = (function (){
 
 	var eliminarPelicula = function (pelicula){
 		
-		var pos = peliculaNoIngresada(pelicula);
-
-		if (pos > -1){
 
 			peliculas.splice(pos, 1);
 
@@ -290,11 +258,6 @@ var IMDB = (function (){
 
 			dibujarPelicula(pelicula);
 
-		} else {
-
-			alert('La pelicula con id ' + pelicula.id + 'no existe');
-
-		}
 
 	}
 
@@ -319,11 +282,11 @@ var IMDB = (function (){
 
 		if (peliculas.length !== 0) {
 			
-			var copiaNoticias = noticias;
+			var copiaPeliculas = peliculas;
 
-			copiaNoticias.sort(ordenarId);
+			copiaPeliculas.sort(ordenarId);
 
-			id = copiaNoticias[0].id + 1;
+			id = copiaPeliculas[0].id + 1;
 
 		}
 
@@ -333,9 +296,9 @@ var IMDB = (function (){
 
     var vincularFormulario = function (){
 
-    	boton = document.getElementById('boton')
+    	var boton = document.getElementById('boton')
 
-    	boton.onclick = crearPelicula();
+    	boton.onclick = crearPelicula;
     }
 
     var crearPelicula = function (){
@@ -357,7 +320,7 @@ var IMDB = (function (){
     	var az = document.getElementById('az');
     	var za = document.getElementById('za');
 
-    	id.onclick = ordenarId();
+    	id.onclick = ordenarId;
     	az.onclick = ordenarAz;
     	za.onclick = ordenarZa;
     }
@@ -366,17 +329,20 @@ var IMDB = (function (){
 
     var iniciar = function () {
     	
+    	precargarPelicula();
     	vincularFormulario();
     	vincularOrdenamientos();
-    	precargarPelicula();
+    	
     }
     
 
 
 	return {
 
-		inciar:iniciar,
+		iniciar:iniciar,
 
 	};
 
 })()
+
+window.onload = IMDB.iniciar;
